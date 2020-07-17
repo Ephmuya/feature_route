@@ -1,4 +1,4 @@
-from flask import Flask,request
+from flask import Flask,request,Response
 import requests
 from flask_cors import CORS
 
@@ -13,7 +13,7 @@ def rcmrd():
     url = request.args.get('url')
     try:
         data = requests.get(url=url)
-        return data.text
+        return Response(data, mimetype='text/xml')
     except Exception as e:
         return e
 
