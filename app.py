@@ -15,7 +15,7 @@ def rcmrd():
         data = requests.get(url=url)
         data = data.text
         base = request.base_url
-        update_base = data.replace("http://geoportal.rcmrd.org", base+"/http://geoportal.rcmrd.org")
+        update_base = data.replace("http://geoportal.rcmrd.org", base+"/?url=http://geoportal.rcmrd.org")
         return Response(update_base, mimetype='text/xml')
     except Exception as e:
         return e
