@@ -4,6 +4,10 @@ import requests
 
 app = Flask(__name__)
 @app.route('/')
+def index():
+    return 'ok'
+
+@app.route('/ogc')
 def route_wms():
     url = request.args.get('url')
     try:
