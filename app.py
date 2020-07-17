@@ -13,7 +13,10 @@ def rcmrd():
     url = request.args.get('url')
     try:
         data = requests.get(url=url)
-        return Response(data, mimetype='text/xml')
+        data = data.text
+        base = request.base_url
+        update_base = data.replace("http://geoportal.rcmrd.org", base+"/http://geoportal.rcmrd.org")
+        return Response(update_base, mimetype='text/xml')
     except Exception as e:
         return e
 
